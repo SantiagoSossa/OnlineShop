@@ -32,15 +32,12 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'products', component: ProductsComponent },
-  { path: 'check-out', component: CheckOutComponent },
-  { path: 'order-success', component: OrderSuccessComponent },
+  { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService] },
+  { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
-  { path: 'admin/products', component: AdminProductsComponent },
-  { path: 'admin/orders', component: AdminOrdersComponent },
-  { path: 'my/orders', component: MyOrdersComponent },
-  { path: 'admin/manage-orders', component: ManageOrdersComponent },
-  { path: 'admin/manage-products', component: ManageProductsComponent },
-  { path: 'username/log-out', component: LogOutComponent },
+  { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService] },
+  { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService] },
+  { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
   { path: '**', component: NotFoundComponent }
 ];
 
