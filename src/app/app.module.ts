@@ -1,3 +1,5 @@
+import { AdminAuthGuardService } from './admin-auth-guard.service';
+import { UserService } from './user.service';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { RouterModule, Routes } from '@angular/router';
@@ -35,8 +37,8 @@ const routes: Routes = [
   { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuardService] },
   { path: 'order-success', component: OrderSuccessComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
-  { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService] },
-  { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService] },
+  { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
+  { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService, AdminAuthGuardService] },
   { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService] },
   { path: '**', component: NotFoundComponent }
 ];
@@ -70,7 +72,9 @@ const routes: Routes = [
   ],
   providers: [
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    AdminAuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
