@@ -13,7 +13,7 @@
           <a routerLink="/login" class="nav-link">Login</a>
         </li>
       </ng-template>
-      <li *ngIf="username$ | async as username; else anonymous" class="nav-item">
+      <li *ngIf="auth.username$ | async as username; else anonymous" class="nav-item">
         <div ngbDropdown class="d-inline-block">
           <button class="btn" id="dropdownBasic1" ngbDropdownToggle>{{username.displayName}}</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
